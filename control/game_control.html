@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>game_control</title>
+    <link rel="shortcut icon" href="../image/ico.png">
+    <link rel="stylesheet" type="text/css" href="../css/control.css">
+    <script src="../script/get_php.js"></script>
+    <script src="../script/timer2.js"></script>
+    <script type="application/javascript">
+        get_time();
+    </script>
+</head>
+
+<body>
+
+<div id="left" >
+    <div>
+        <span class="level" id="bowl" onclick="window.location.href='delete.php?state=2'"><div>煮飯:碗</div></span>
+        <span class="level" id="noodle" onclick="window.location.href='delete.php?state=3'"><div>煮飯:麵</div></span>
+        <span class="level" id="soup" onclick="window.location.href='delete.php?state=4'"><div>煮飯:湯</div></span>
+    </div>
+    <div>
+        <span class="level" id="sadie" onclick="window.location.href='delete.php?state=5'"><div>Sadie</div></span>
+        <span class="level" id="xian" onclick="window.location.href='delete.php?state=6'"><div>Xian</div></span>
+        <span class="level" id="hong" onclick="window.location.href='delete.php?state=7'"><div>Hong</div></span>
+    </div>
+    <div>
+        <span class="level" id="exercise" onclick="window.location.href='delete.php?state=8'"><div>健身房</div></span>
+        <span class="level" id="pig" onclick="window.location.href='delete.php?state=10'"><div>山 豬</div></span>
+        <span class="level" id="love" onclick="window.location.href='delete.php?state=9'"><div>告 白</div></span>
+    </div>
+    <div>
+        <span class="level" id="member" onclick="window.location.href='member_modify.html'"><div>人數調整</div></span>
+        <span class="level" id="time" onclick="window.location.href='time_modify.html'"><div>時間調整</div></span>
+    </div>
+</div>
+<div id="rightbar">
+    <div id="timer">
+    </div>
+    <script>
+        setInterval(time_info,1000);
+    </script>
+    <div id="but_back" onclick="window.location.href='control.html'">BACK</div>
+</div>
+
+</body>
+</html>

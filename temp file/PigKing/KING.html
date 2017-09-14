@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>King</title>
+    <link rel="stylesheet" type="text/css" href="KING.css">
+
+    <script>
+        var color_array = ["rgb(195,104,165)","rgb(243,127,139)","rgb(247,199,127)"," rgb(255,244,104)","rgb(154,242,129)","rgb(127,204,160)","rgb(128,208,245)","rgb(67,125,183)"];
+        function select_team(checked){
+            if(document.getElementById(checked).value == "1") {
+                document.getElementById(checked).style.background = color_array[checked-1];
+                document.getElementById(checked).value = "0";
+            }
+            else {
+                document.getElementById(checked).style.background = "#000000";
+                document.getElementById(checked).value = "1";
+            }
+        }
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("demo").innerHTML =
+                    this.responseText;
+            }
+        };
+
+        function change() {
+            if(document.getElementById("main").style.display != "none"){
+                document.getElementById("main").style.display = "none";
+                document.getElementById("modify").style.display = "block";
+                document.getElementById("change").innerText="Back";
+                document.getElementById("but_ok").innerText="Delete";
+                document.getElementById("but_ok").innerText;
+                get_log();
+            }
+            else{
+                document.getElementById("main").style.display = "block";
+                document.getElementById("modify").style.display = "none";
+                document.getElementById("change").innerText="Edit";
+                document.getElementById("but_ok").innerText="O K";
+            }
+        }
+        var x;
+        function get_log() {
+            var xmlhttp = new XMLHttpRequest();
+            var txt='<div style="border: hidden"><div>';
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    myObj = JSON.parse(this.responseText);
+
+                    for(x in myObj){
+                        var y=x+1000;
+                        txt += '<span><button class="team" id="' + y + '" value="0" onclick="select_team('+ y + ')">'+ myObj[x] + '</button></span></div><div>';
+                    }
+                    txt += '</div></div>';
+                    document.getElementById("log").innerHTML = txt;
+                }
+            };
+            xmlhttp.open("GET", "delete_score.php", true);
+            xmlhttp.send();
+        }
+
+    </script>
+    <link rel="stylesheet" href="PIG.css">
+</head>
+<body style="background-color: rgb(78,75,70);">
+<div id="top" style="display:inline-block; width:100%;">
+    <span><img src="sword.png" id="sword"></span>
+    <span id="com">：</span>
+    <span id="swordcnt">0</span>
+</div>
+
+<div id="main" style="display:inline-block; width:100%;">
+    <div>
+        <span class="team" id="1" value="0" onclick="select_team(1)">1</span>
+        <span class="team" id="2" value="0" onclick="select_team(2)">2</span>
+        <span class="team" id="3" value="0" onclick="select_team(3)">3</span>
+        <span class="team" id="4" value="0" onclick="select_team(4)">4</span>
+    </div>
+    <div>
+        <span class="team" id="5" value="0" onclick="select_team(5)">5</span>
+        <span class="team" id="6" value="0" onclick="select_team(6)">6</span>
+        <span class="team" id="7" value="0" onclick="select_team(7)">7</span>
+        <span class="team" id="8" value="0" onclick="select_team(8)">8</span>
+    </div>
+</div>
+
+<div style="display:none;" id="modify"></div>
+<div id="log"></div>
+<div>
+
+</div>
+
+<div><span id="change" onclick="change()">Kill</span></div>
+
+<div>
+    <span id="go">出動</span>
+    <span id="back">回家</span>
+</div>
+
+<p id="demo"></p>
+
+</body>
+</html>

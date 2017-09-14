@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Running Man!</title>
+    <link rel="shortcut icon" href="../image/ico.png">
+    <link rel="shortcut icon" href="../image/ico.png">
+    <link rel="stylesheet" type="text/css" href="../css/informCSS.css">
+    <script>
+        var level_state = 0;
+        var level_time="00 : 00";
+    </script>
+    <script type='text/javascript' src='https://code.jquery.com/jquery-1.9.1.min.js'></script>
+    <script src="../script/timer3.js"></script>
+    <script src="../script/get_php.js"></script>
+    <script type="application/javascript">
+        get_time();
+        var kop_moving_timer = null;
+        function update_info(){
+            for(var i=1;i<=8;i++){
+                var team_mem_cur = all_info[0][i.toString()]["mem_cur"];
+                var team_mem_all = all_info[0][i.toString()]["mem_all"];
+                var team_score = all_info[0][i.toString()]["score"];
+                document.getElementById("team"+i.toString()+"mem").innerHTML=team_mem_cur+"/"+team_mem_all;
+                document.getElementById("team"+i.toString()+"score").innerHTML=team_score+"分";
+            }
+            if(all_info[1]["kop"]=="1" && kop_moving_timer==null){
+                document.getElementById("alert_audio").currentTime=0;
+                document.getElementById("alert_audio").play();
+                document.getElementById("kop_img").style.display="inherit";
+                kop_moving_timer = setInterval(kopmove,3000);
+            }
+            else if(all_info[1]["kop"]=="0" && kop_moving_timer!=null){
+                document.getElementById("alert_audio").pause();
+                //document.getElementById("alert_audio").currentTime = 0;
+                document.getElementById("kop_img").style.display = "none";
+                clearInterval(kop_moving_timer);
+                kop_moving_timer = null;
+            }
+        }
+        function update_level() {
+            if(all_info[1]["gym"]=="1")document.getElementById("gym").style.backgroundImage = "url(../image/game/game-exercise.png)";
+            else document.getElementById("gym").style.backgroundImage = "url(../image/game/game_close.png)";
+            if(level_state==1){
+                document.getElementById("level1").style.backgroundImage = "url(../image/game/game-manbug.png)";
+                document.getElementById("level3").style.backgroundImage = "url(../image/game/game-dance.png)";
+                document.getElementById("level5").style.backgroundImage = "url(../image/game/game-gamble.png)";
+                document.getElementById("level2").style.backgroundImage = "url(../image/game/game_close.png)";
+                document.getElementById("level4").style.backgroundImage = "url(../image/game/game_close.png)";
+                document.getElementById("level6").style.backgroundImage = "url(../image/game/game_close.png)";
+                document.getElementById("level1text").style.display = "inherit";
+                document.getElementById("level3text").style.display = "inherit";
+                document.getElementById("level5text").style.display = "inherit";
+                document.getElementById("level2text").style.display = "none";
+                document.getElementById("level4text").style.display = "none";
+                document.getElementById("level6text").style.display = "none";
+                document.getElementById("level1text").innerHTML = level_time;
+                document.getElementById("level3text").innerHTML = level_time;
+                document.getElementById("level5text").innerHTML = level_time;
+            }else{
+                document.getElementById("level1").style.backgroundImage = "url(../image/game/game_close.png)";
+                document.getElementById("level3").style.backgroundImage = "url(../image/game/game_close.png)";
+                document.getElementById("level5").style.backgroundImage = "url(../image/game/game_close.png)";
+                document.getElementById("level2").style.backgroundImage = "url(../image/game/game-bind.png)";
+                document.getElementById("level4").style.backgroundImage = "url(../image/game/game-say.png)";
+                document.getElementById("level6").style.backgroundImage = "url(../image/game/game-merder.png)";
+                document.getElementById("level1text").style.display = "none";
+                document.getElementById("level3text").style.display = "none";
+                document.getElementById("level5text").style.display = "none";
+                document.getElementById("level2text").style.display = "inherit";
+                document.getElementById("level4text").style.display = "inherit";
+                document.getElementById("level6text").style.display = "inherit";
+                document.getElementById("level2text").innerHTML = level_time;
+                document.getElementById("level4text").innerHTML = level_time;
+                document.getElementById("level6text").innerHTML = level_time;
+            }
+        }
+        function refresh(){
+            var fun = function (_this) {
+                all_info = JSON.parse(_this.responseText);
+                if(all_info[1]["freeze"]=="1")window.location.href="../final.html";
+                update_info();
+                update_level();
+            };
+            get_php(fun,"../function/control_panel_info.php");
+        }
+        refresh();
+        setInterval(refresh,5000);
+        function changeclick(){
+            document.getElementById("click").src = "../image/click2.png";
+        }
+        function  recoverclick() {
+            document.getElementById("click").src = "../image/click1.png";
+        }
+        function kopmove(){
+            console.log("A");
+            var nh=999999999;
+            var nw=999999999;
+            while(nh>window.innerHeight-280 || nw>innerWidth-280 || nh <280 ||nw<280){
+                nh= Math.floor(Math.random()*1000);
+                nw= Math.floor(Math.random()*1000);
+            }
+            $("#kop_img").animate({ top:nh+"px",left:nw+"px"}, 2950 ,'linear');
+        }
+        $(function(){
+            $('#click').bind("touchstart mousedown",function(){
+                changeclick();
+                // Do something with elem
+            });
+            $('#click').bind("touchend mouseup",function(){
+                recoverclick();
+                // Do something with elem
+            });
+        })
+        function  showmenu() {
+            document.getElementById("menu").style.display = "inherit";
+        }
+        function  hidemenu() {
+            document.getElementById("menu").style.display = "none";
+        }
+    </script>
+</head>
+<body>
+<audio id="alert_audio" preload="auto"><source src="../Alert.mp3"></audio>
+<div style="width: 100vw;height: 100vh;z-index: 1;position: absolute;top:0;left:0;display: none;" id="menu" onclick="hidemenu()">
+    <div style="background-image: url('../image/star.jpg');opacity: 1;z-index: 1;position: absolute;width: 100vw;height: 100vh">
+    </div>
+    <div class="float">
+        <div class="container">
+            <div class="fliper">
+                <div class="cardfront"><img src="../image/card/main1.png" width="300" height="449"></div>
+                <div class="cardback"><img src="../image/card/main2.png" width="300" height="449"> </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="fliper">
+                <div class="cardfront"><img src="../image/card/other1.png" width="300" height="449"></div>
+                <div class="cardback"><img src="../image/card/other2.png" width="300" height="449"> </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="fliper">
+                <div class="cardfront"><img src="../image/card/exercise1.png" width="300" height="449"></div>
+                <div class="cardback"><img src="../image/card/exercise2.png" width="300" height="449"> </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="fliper">
+                <div class="cardfront"><img src="../image/card/sword1.png" width="300" height="449"></div>
+                <div class="cardback"><img src="../image/card/sword2.png" width="300" height="449"> </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<img src="../image/kop.gif" width="300" height="300" id="kop_img" style="position: absolute;display: none;"/>
+<div id="left">
+    <img src="../image/top-inform.png" width="750">
+    <div>
+        <div class="team" style="background-image:url('../image/team1.png');"><span id="team1score"></span><br><span id="team1mem"></span></div>
+        <div class="team" style="background-image:url('../image/team2.png');"><span id="team2score"></span><br><span id="team2mem"></span></div>
+        <div class="team" style="background-image:url('../image/team3.png');"><span id="team3score"></span><br><span id="team3mem"></span></div>
+        <div class="team" style="background-image:url('../image/team4.png');"><span id="team4score"></span><br><span id="team4mem"></span></div>
+        <div class="team" style="background-image:url('../image/team5.png');"><span id="team5score"></span><br><span id="team5mem"></span></div>
+        <div class="team" style="background-image:url('../image/team6.png');"><span id="team6score"></span><br><span id="team6mem"></span></div>
+        <div class="team" style="background-image:url('../image/team7.png');"><span id="team7score"></span><br><span id="team7mem"></span></div>
+        <div class="team" style="background-image:url('../image/team8.png');"><span id="team8score"></span><br><span id="team8mem"></span></div>
+    </div>
+    <div>
+        <div class="level_style"id="level1"><span id="level1text">00 : 00</span></div>
+        <div class="level_style"id="level2"><span id="level2text">00 : 00</span></div>
+        <div class="level_style"id="level3"><span id="level3text">00 : 00</span></div>
+
+    </div>
+    <div>
+        <div class="level_style"id="level4"><span id="level4text">00 : 00</span></div>
+        <div class="level_style"id="level5"><span id="level5text">00 : 00</span></div>
+        <div class="level_style"id="level6"><span id="level6text">00 : 00</span></div>
+        <div class="level_style"id="gym"></div>
+    </div>
+</div>
+
+<div id="rightbar">
+    <div id="time">
+        <div id="timer">00:00:00</div>
+    </div>
+    <script>
+        setInterval(time_info,1000);
+    </script>
+    <img src="../image/relife.gif" style="height: 380px;" id="relife"><br/>
+    <img src="../image/click.png" style="height: 380px;" id="click_here"><br/>
+    <img class="click" id="click" src="../image/click1.png" onclick="showmenu();">
+</div>
+</body>
+</html>

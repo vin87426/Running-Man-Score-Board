@@ -1,0 +1,131 @@
+@charset "utf-8";
+
+.team {
+    background-color: #000000;
+    border-radius:10%;
+    border: none;
+    color: white;
+    width:15vw;
+    height:15vw;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13vw;
+    margin: 1vw 1vw;
+    cursor: pointer;
+}
+
+#main{
+    display:inline-block;
+    width:100%;
+}
+
+body {
+    background-color: rgb(78,75,70);
+    -moz-user-select : none;
+    -webkit-user-select: none;
+}
+
+
+div{
+    text-align: center;
+}
+
+#modify{
+    background-color: white;
+    border:solid;
+    border-color:rgb(240,149,0);
+    border-width: 3vw;
+    width:90vw;
+    overflow: auto;
+}
+
+#but_ok{
+    background-color: white;
+    margin-left: 5vw;
+    width: 40vw;
+    font-size: 20vw;
+    color:rgb(78,75,70);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top:5vw;
+}
+
+#but_del{
+    background-color: white;
+    margin-left: 5vw;
+    width: 40vw;
+    font-size: 20vw;
+    color:rgb(78,75,70);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top:5vw;
+    margin-bottom: 5vw;
+}
+
+#log{
+    width:90vw;
+    height:70vw;
+}
+
+.score{
+    font-size: 7vw;
+    margin:2vw;
+}
+
+#go{
+    background-color: white;
+    margin-top: 2vw;
+    margin-right: 7vw;
+    width: 35vw;
+    font-size: 15vw;
+    color:rgb(78,75,70);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight:bold;
+    cursor: pointer;
+}
+
+#back{
+    background-color: white;
+    margin-top: 2vw;
+    width: 35vw;
+    font-size: 15vw;
+    color:rgb(78,75,70);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight:bold;
+    cursor: pointer;
+}
+
+#sword{
+    width: 18vw;
+    margin-top: 5vw;
+}
+
+#com{
+    font-size: 25vw;
+    color: white;
+}
+
+#swordcnt{
+    font-size: 25vw;
+    color: white;
+    margin-right: 6vw;
+}
+#change{
+    width:25vw;
+    font-size: 10vw;
+    color: white;
+    margin-top:5vw;
+    margin-bottom: 5vw;
+}
+#timer{
+    font-size: 10vw;
+    color: white;
+    margin:2vw;
+}

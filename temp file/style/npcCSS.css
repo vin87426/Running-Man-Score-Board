@@ -1,0 +1,92 @@
+@charset "utf-8";
+
+.team {
+    background-color: #000000;
+    border-radius:10%;
+    border: none;
+    color: white;
+    width:22vw;
+    height:22vw;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18vw;
+    margin: 2vw;
+    cursor: pointer;
+}
+
+#timer{
+    font-size: 10vw;
+    color: white;
+    margin:2vw;
+}
+
+#main{
+    display:inline-block;
+    width:100%;
+}
+
+#log{
+    width:90vw;
+    height:70vw;
+}
+
+.score{
+    font-size: 7vw;
+    margin:2vw;
+}
+
+body {
+    background-color: rgb(78,75,70);
+    -moz-user-select : none;
+    -webkit-user-select: none;
+}
+
+div{
+    text-align: center;
+}
+
+#modify{
+    display:none;
+    background-color: white;
+    border:solid;
+    border-color:rgb(240,149,0);
+    border-width: 2vw;
+    width:90vw;
+    height:110vw;
+    overflow: auto;
+    margin:2vw;
+}
+
+#but_ok{
+    background-color: white;
+    margin-left: 5vw;
+    width: 40vw;
+    font-size: 20vw;
+    color:rgb(78,75,70);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top:5vw;
+}
+
+#change{
+    width:25vw;
+    font-size: 10vw;
+    color: white;
+    margin-top:5vw;
+    margin-bottom: 5vw;
+}
+
+#but_del{
+    background-color: white;
+    margin-left: 5vw;
+    width: 40vw;
+    font-size: 20vw;
+    color:rgb(78,75,70);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top:5vw;
+    margin-bottom: 5vw;
+}

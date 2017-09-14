@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Information station</title>
+    <link rel="stylesheet" type="text/css" href="npcCSS.css">
+    <script type="text/javascript" src="no_select.js"></script>
+    <script src="timer.js"></script>
+    <script>
+        var color_array = ["rgb(195,104,165)","rgb(243,127,139)","rgb(247,199,127)"," rgb(255,244,104)","rgb(154,242,129)","rgb(127,204,160)","rgb(128,208,245)","rgb(67,125,183)"];
+        var selected =["0","0","0","0","0","0","0","0","0"];
+        // select or not select a team
+        function Select(checked){
+            console.log(checked);
+            // team has not been selected
+            if(selected[checked] == "0") {
+                document.getElementById(checked).style.background = color_array[checked-1];
+                selected[checked] = "1";
+            }
+            // team has already been selected
+            else {
+                document.getElementById(checked).style.background = "#000000";
+                selected[checked] = "0";
+            }
+        }
+        // send team data when click "OK!"
+        function add() {
+            //get response
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    if(this.responseText != "00000000")
+                        alert(this.responseText);
+                }
+            };
+            //connect string
+            var team="";
+            for(var i=8;i>0;i--) team += selected[i];
+            console.log("Team: " + team);
+            //send stage 2 and team data
+            xhttp.open("GET", "add_score.php?which_stage=2&which_team=" + team , true);
+            xhttp.send();
+            for(var j=1;j<9;j++){
+                document.getElementById(j).style.background = "#000000";
+                selected[j] = "0";
+            }
+        }
+        function change() { //switch between main panel and modify panel
+            if(document.getElementById("main").style.display != "none"){
+                document.getElementById("main").style.display = "none";
+                document.getElementById("modify").style.display = "block";
+                document.getElementById("but_ok").style.display = "none";
+                document.getElementById("but_del").style.display = "inline-block";
+                document.getElementById("log").style.display = "inherit";
+                document.getElementById("change").innerText="Back";
+                get_log();
+            }
+            else{
+                document.getElementById("main").style.display = "block";
+                document.getElementById("modify").style.display = "none";
+                document.getElementById("but_del").style.display = "none";
+                document.getElementById("but_ok").style.display = "inline-block";
+                document.getElementById("change").innerText="Edit";
+                document.getElementById("log").innerHTML = "";
+            }
+        }
+
+        function get_log() {
+            var xmlhttp = new XMLHttpRequest();
+            var text ="";
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    myObj = JSON.parse(this.responseText);
+
+                    for(var entry in myObj){
+                        var idid="'d" + entry + "'";
+                        //console.log("idid:" + idid);
+                        text = '<section class="score" id=' + idid + ' value="0" onclick="sel_item(' + idid + ')">Team: '+ myObj[entry][1] + '  Time: ' + myObj[entry][2] + '</section>' + text;
+                    }
+                    document.getElementById("log").innerHTML = text;
+                }
+            };
+            xmlhttp.open("GET", "list.php?which_stage=2", true);
+            xmlhttp.send();
+        }
+        var del_item = null;
+        function sel_item(checked) {
+            if(del_item == checked) {
+                document.getElementById(del_item).style.background = "white";
+                del_item = null;
+                return;
+            }
+            del_item = checked;
+            console.log("selected: " + myObj[del_item.slice(1)][0]);
+            for(var entry in myObj) {
+                var idid="d" + entry;
+                //console.log("idid: " + idid +"checked: " + checked);
+                if(idid == checked) {
+                    //console.log("match" + idid);
+                    document.getElementById(idid).style.background = "#d0d0d0";
+                }
+                else {
+                    //console.log("mismatch" + idid);
+                    document.getElementById(idid).style.background = "white";
+                }
+            }
+        }
+        function del(){
+            if(del_item != null){
+                var xmlhttp = new XMLHttpRequest();
+                var text = "";
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        myObj = JSON.parse(this.responseText);
+
+                        for(var entry in myObj){
+                            var idid="'d" + entry + "'";
+                            //console.log("idid:" + idid);
+                            text = '<section class="score" id=' + idid + ' value="0" onclick="sel_item(' + idid + ')">Team: '+ myObj[entry][1] + '  Time: ' + myObj[entry][2] + '</section>' + text;
+                        }
+                        document.getElementById("log").innerHTML = text;
+                    }
+                };
+                document.getElementById("log").innerHTML = "";
+                xmlhttp.open("GET", "delete_score.php?which_stage=2&ididid=" + myObj[del_item.slice(1)][0], true);
+                xmlhttp.send();
+                console.log("delete: " + myObj[del_item.slice(1)][0]);
+                del_item = null;
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+
+<div id="main">
+    <div id="timer"></div>
+    <script>
+        get_time();
+    </script>
+
+    <div>
+        <span class="team" id="1" onclick="Select(1)">1</span>
+        <span class="team" id="2" onclick="Select(2)">2</span>
+    </div>
+    <div>
+        <span class="team" id="3" onclick="Select(3)">3</span>
+        <span class="team" id="4" onclick="Select(4)">4</span>
+    </div>
+    <div>
+        <span class="team" id="5" onclick="Select(5)">5</span>
+        <span class="team" id="6" onclick="Select(6)">6</span>
+    </div>
+    <div>
+        <span class="team" id="7" onclick="Select(7)">7</span>
+        <span class="team" id="8" onclick="Select(8)">8</span>
+    </div>
+</div>
+
+<div id="modify">
+    <div id="log" style="display:none;"></div>
+</div>
+
+<div>
+    <span id="change" onclick="change()">Edit</span>
+    <span id="but_ok" onclick="add()">O K</span>
+    <span id="but_del" onclick="del()" style="display:none;">Del</span>
+</div>
+
+</body>
+</html>

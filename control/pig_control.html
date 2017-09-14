@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pig_control</title>
+    <link rel="shortcut icon" href="../image/ico.png">
+    <link rel="stylesheet" type="text/css" href="../css/control.css">
+    <script src="../script/get_php.js"></script>
+    <script src="../script/timer.js"></script>
+    <script type="application/javascript">
+        get_time();
+        function plus(item){
+            var fun = function (_this) {
+                refresh();
+            };
+            get_php(fun,"../function/gamecontrol.php?item="+item+"&num=1");
+        }
+        function minus(item){
+            var fun = function (_this) {
+                refresh();
+            };
+            get_php(fun,"../function/gamecontrol.php?item="+item+"&num=-1");
+        }
+        function refresh() {
+            var fun = function (_this) {
+                all_info = JSON.parse(_this.responseText);
+                var text="";
+                document.getElementById("pig_num").innerHTML='&nbsp;'+all_info[1]+'隻';
+                document.getElementById("sword_num").innerHTML='&nbsp;'+all_info[0]+'隻';
+                if(all_info[2]==0)document.getElementById("king_state").innerHTML ='休息';
+                else document.getElementById("king_state").innerHTML = '出動';
+            };
+            get_php(fun,"../function/gameinfo.php");
+        }
+        refresh();
+        setInterval(refresh,10000);
+    </script>
+</head>
+<body>
+
+<div id="left" style="margin-top: 50px;">
+    <div id="sword_control">
+        <span class="category"><div>劍</div></span>
+        <span class="but_change" id="sword_add"><div onclick="plus(1);">+</div></span>
+        <span class="but_content"  id="sword_num"></span>
+        <span class="but_change" id="sword_cut" onclick="minus(1);"><div>-</div></span>
+    </div>
+    <div id="pig_control">
+        <span class="category"><div>山豬</div></span>
+        <span class="but_change" id="pig_add"><div onclick="plus(2);">+</div></span>
+        <span class="but_content"   id="pig_num"></span>
+        <span class="but_change" id="pig_cut" onclick="minus(2);"><div>-</div></span>
+    </div>
+    <div id="king_control">
+        <span class="category"><div>山豬王</div></span>
+        <span class="but_change" id="king_add" onclick="plus(3);"><div>出動</div></span>
+        <span class="but_content" id="king_state"></span>
+        <span class="but_change" id="king_cut" onclick="minus(3);"><div>回家</div></span>
+    </div>
+</div>
+
+<div id="rightbar">
+    <div id="timer">
+    </div>
+    <script>
+        setInterval(time_info,1000);
+    </script>
+</div>
+
+<div>
+    <span class="but_end" id="but_ok" onclick="window.location.href='control.html'"><div>返回</div></span>
+</div>
+
+</body>
+</html>

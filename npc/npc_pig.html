@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pig</title>
+    <link rel="shortcut icon" href="../image/ico.png">
+    <link rel="stylesheet" type="text/css" href="../css/PIG.css">
+    <script src="../script/timer.js"></script>
+    <script src="../script/get_php.js"></script>
+    <script src="../script/pig_select.js"></script>
+    <link rel="stylesheet" href="../css/PIG.css">
+</head>
+<body style="background-color: rgb(78,75,70);">
+<div>
+<img src="../image/top-pig.png" style="width: 90vw;">
+<div id="timer"></div>
+<script>
+    setInterval(time_info,1000);
+</script>
+<div id="top" style="display:inline-block; width:100%;">
+    <span><img src="../image/sword.png" id="sword"></span>
+    <span id="com">：</span>
+    <span id="swordcnt">0</span>
+</div>
+
+<div id="main" style="display:inline-block; width:100%;">
+    <div>
+        <span class="team" id="1" onclick="select_team(1)">1</span>
+        <span class="team" id="2" onclick="select_team(2)">2</span>
+        <span class="team" id="3" onclick="select_team(3)">3</span>
+        <span class="team" id="4" onclick="select_team(4)">4</span>
+    </div>
+    <div>
+        <span class="team" id="5" onclick="select_team(5)">5</span>
+        <span class="team" id="6" onclick="select_team(6)">6</span>
+        <span class="team" id="7" onclick="select_team(7)">7</span>
+        <span class="team" id="8" onclick="select_team(8)">8</span>
+    </div>
+</div>
+
+<div style="display:none;" id="modify"></div>
+<div id="log"></div>
+<div>
+    <span id="change" onclick="pigkill('kill')">Kill</span>
+    <span id="but_ok" onclick="pigkill('killed')">Killed</span>
+    <span id="but_sword" onclick="minus_sword()" style="cursor: pointer;">Sword--</span>
+</div>
+
+<div>
+    <span id="go" onclick="go_out(0)">出動</span>
+    <span id="back" onclick="go_home(0)">回家</span>
+</div>
+
+<p id="demo"></p>
+</div>
+</body>
+</html>

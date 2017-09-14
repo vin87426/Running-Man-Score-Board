@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reset</title>
+    <script src="script/get_php.js"></script>
+    <script type="application/javascript">
+        function plus(id){
+            document.getElementById(id).innerHTML = Math.floor(document.getElementById(id).innerHTML)+1;
+        }
+        function minus(id){
+            document.getElementById(id).innerHTML = document.getElementById(id).innerHTML-1;
+            if(Math.floor(document.getElementById(id).innerHTML)<=0)document.getElementById(id).innerHTML=0;
+        }
+        function gamestart(){
+            var fun = function (_this) {
+                window.location.href = "control/control.html";
+            };
+            var data = {};
+            data.t1 = document.getElementById('1').innerHTML;
+            data.t2 = document.getElementById('2').innerHTML;
+            data.t3 = document.getElementById('3').innerHTML;
+            data.t4 = document.getElementById('4').innerHTML;
+            data.t5 = document.getElementById('5').innerHTML;
+            data.t6 = document.getElementById('6').innerHTML;
+            data.t7 = document.getElementById('7').innerHTML;
+            data.t8 = document.getElementById('8').innerHTML;
+            data.hr = document.getElementById('hr').value;
+            data.mi = document.getElementById('mi').value;
+            get_php(fun,"reset.php?data="+JSON.stringify(data));
+        }
+    </script>
+    <style type="text/css">
+        *{
+            font-family:"微軟正黑體" ;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: rgb(78,75,70);
+            margin: 0;
+        }
+        .PL{
+            display: inline-block;
+            height: 10vh;
+            font-size: 7vh;
+            background-color: white;
+            width: 12vh;
+            vertical-align: top;
+            padding:0vh;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 100%;text-align: center">
+        <div style="margin: auto;width: 100vh;margin-top: 4vh;background-color: rgb(195,104,165);">
+            <div class="PL" onclick="plus(1);">+</div>
+            <div style="display: inline-block;height: 10vh;font-size: 7vh;margin-left: 10vh;margin-right: 10vh;vertical-align: top;color: white" id="1">8</div>
+            <div class="PL" onclick="minus(1)">-</div>
+        </div>
+        <div style="margin: auto;width: 100vh;margin-top: 4vh;background-color:rgb(243,127,139);">
+            <div class="PL" onclick="plus(2);">+</div>
+            <div style="display: inline-block;height: 10vh;font-size: 7vh;margin-left: 10vh;margin-right: 10vh;vertical-align: top;color: white" id="2">8</div>
+            <div class="PL" onclick="minus(2)">-</div>
+        </div>
+        <div style="margin: auto;width: 100vh;margin-top: 4vh;background-color:rgb(247,199,127);">
+            <div class="PL" onclick="plus(3);">+</div>
+            <div style="display: inline-block;height: 10vh;font-size: 7vh;margin-left: 10vh;margin-right: 10vh;vertical-align: top;color: white" id="3">8</div>
+            <div class="PL" onclick="minus(3)">-</div>
+        </div>
+        <div style="margin: auto;width: 100vh;margin-top: 4vh;background-color:rgb(255,244,104);">
+            <div class="PL" onclick="plus(4);">+</div>
+            <div style="display: inline-block;height: 10vh;font-size: 7vh;margin-left: 10vh;margin-right: 10vh;vertical-align: top;color: white" id="4">8</div>
+            <div class="PL" onclick="minus(4)">-</div>
+        </div>
+        <div style="margin: auto;width: 100vh;margin-top: 4vh;background-color:rgb(154,242,129);">
+            <div class="PL" onclick="plus(5);">+</div>
+            <div style="display: inline-block;height: 10vh;font-size: 7vh;margin-left: 10vh;margin-right: 10vh;vertical-align: top;color: white" id="5">8</div>
+            <div class="PL" onclick="minus(5)">-</div>
+        </div>
+        <div style="margin: auto;width: 100vh;margin-top: 4vh;background-color:rgb(127,204,160);">
+            <div class="PL" onclick="plus(6);">+</div>
+            <div style="display: inline-block;height: 10vh;font-size: 7vh;margin-left: 10vh;margin-right: 10vh;vertical-align: top;color: white" id="6">8</div>
+            <div class="PL" onclick="minus(6)">-</div>
+        </div>
+        <div style="margin: auto;width: 100vh;margin-top: 4vh;background-color:rgb(128,208,245);">
+            <div class="PL" onclick="plus(7);">+</div>
+            <div style="display: inline-block;height: 10vh;font-size: 7vh;margin-left: 10vh;margin-right: 10vh;vertical-align: top;color: white" id="7">8</div>
+            <div class="PL" onclick="minus(7)">-</div>
+        </div>
+        <div style="margin: auto;width: 100vh;margin-top: 4vh;background-color:rgb(67,125,183);">
+            <div class="PL" onclick="plus(8);">+</div>
+            <div style="display: inline-block;height: 10vh;font-size: 7vh;margin-left: 10vh;margin-right: 10vh;vertical-align: top;color: white" id="8">8</div>
+            <div class="PL" onclick="minus(8)">-</div>
+        </div>
+        <div style="margin: auto;width: 100vh;margin-top: 4vh;background-color:rgb(67,125,183);font-size: 60px;">
+            <input type="text" class="PL" id="hr" style="cursor: text;">時<input type="text" class="PL" id="mi" style="cursor: text;">分
+        </div>
+        <div style="margin: auto;width: 100vh;margin-top: 4vh;">
+            <div class="PL" style="width: 30vh" onclick="gamestart();">開始</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>control</title>
+    <link rel="stylesheet" type="text/css" href="../css/control.css">
+    <link rel="shortcut icon" href="../image/ico.png">
+    <script>
+        var level_state = 0;
+        var level_time="00 : 00";
+    </script>
+    <script src="../script/timer2.js"></script>
+    <script src="../script/get_php.js"></script>
+    <script src="../script/multi_select.js"></script>
+    <script>
+        get_time();
+        var all_info=null;
+        function update_team(){
+            for(var i=1;i<=8;i++){
+                var team_mem_cur = all_info[0][i.toString()]["mem_cur"];
+                var team_mem_all = all_info[0][i.toString()]["mem_all"];
+                var team_score = all_info[0][i.toString()]["score"];
+                document.getElementById("team"+i.toString()+"mem").innerHTML=team_mem_cur+"/"+team_mem_all;
+                document.getElementById("team"+i.toString()+"score").innerHTML=team_score+"分";
+            }
+        }
+        function update_log() {
+            document.getElementById("log").innerHTML="";
+            var text ="";
+            myObj = all_info[2];
+            for(var entry in myObj){
+                var idid="'d" + entry + "'";
+                //console.log("idid:" + idid);
+                text = '<section class="score" style="margin-bottom: 10px" id=' + idid + ' value="0" onclick="sel_item(' + idid + ')">Team: '+ myObj[entry][1] + '  Time: ' + myObj[entry][2].split(" ")[1].split(".")[0]+'   Stage: ' + myObj[entry][3]+'   Score: ' + myObj[entry][4]+'</section>' + text;
+            }
+            document.getElementById("log").innerHTML = text;
+        }
+        function update_item(){
+            var text="";
+            text += '<section>Pig:'+all_info[1]["pig"]+'隻</section>';
+            text += '<section>Sword:'+all_info[1]["sword"]+'把</section>';
+            if(all_info[1]["kop"]==0)text += '<section>Kin of Pig:在家休息</section>';
+            else text += '<section>King of Pig:出動中</section>';
+            document.getElementById("pig_log").innerHTML = "";
+            document.getElementById("pig_log").innerHTML = text;
+
+        }
+        function flash(){
+            flash_black();
+            setTimeout(flash_blink,1000);
+        }
+        function flash_black(){
+            for(var i=1;i<=8;i++){
+                var team_reborn = all_info[0][i.toString()]["reborn"];
+                if(team_reborn>0&&selected[i]=="0"){
+                    document.getElementById(i).style.backgroundColor = "black"
+                }
+            }
+        }
+        function flash_blink(){
+            for(var i=1;i<=8;i++){
+                var team_reborn = all_info[0][i.toString()]["reborn"];
+                if(team_reborn>0&&selected[i]=="0"){
+                    document.getElementById(i).style.backgroundColor=color_array[i-1];
+                }
+            }
+        }
+        function update_level() {
+            if(all_info[1]["gym"]=="1")document.getElementById("gym").style.backgroundImage = "url(../image/game/game-exercise.png)";
+            else document.getElementById("gym").style.backgroundImage = "url(../image/game/game_close.png)";
+            if(level_state==1){
+                document.getElementById("level1").style.backgroundImage = "url(../image/game/game-manbug.png)";
+                document.getElementById("level3").style.backgroundImage = "url(../image/game/game-dance.png)";
+                document.getElementById("level5").style.backgroundImage = "url(../image/game/game-gamble.png)";
+                document.getElementById("level2").style.backgroundImage = "url(../image/game/game_close.png)";
+                document.getElementById("level4").style.backgroundImage = "url(../image/game/game_close.png)";
+                document.getElementById("level6").style.backgroundImage = "url(../image/game/game_close.png)";
+                document.getElementById("level1text").style.display = "inherit";
+                document.getElementById("level3text").style.display = "inherit";
+                document.getElementById("level5text").style.display = "inherit";
+                document.getElementById("level2text").style.display = "none";
+                document.getElementById("level4text").style.display = "none";
+                document.getElementById("level6text").style.display = "none";
+                document.getElementById("level1text").innerHTML = level_time;
+                document.getElementById("level3text").innerHTML = level_time;
+                document.getElementById("level5text").innerHTML = level_time;
+            }else{
+                document.getElementById("level1").style.backgroundImage = "url(../image/game/game_close.png)";
+                document.getElementById("level3").style.backgroundImage = "url(../image/game/game_close.png)";
+                document.getElementById("level5").style.backgroundImage = "url(../image/game/game_close.png)";
+                document.getElementById("level2").style.backgroundImage = "url(../image/game/game-bind.png)";
+                document.getElementById("level4").style.backgroundImage = "url(../image/game/game-say.png)";
+                document.getElementById("level6").style.backgroundImage = "url(../image/game/game-merder.png)";
+                document.getElementById("level1text").style.display = "none";
+                document.getElementById("level3text").style.display = "none";
+                document.getElementById("level5text").style.display = "none";
+                document.getElementById("level2text").style.display = "inherit";
+                document.getElementById("level4text").style.display = "inherit";
+                document.getElementById("level6text").style.display = "inherit";
+                document.getElementById("level2text").innerHTML = level_time;
+                document.getElementById("level4text").innerHTML = level_time;
+                document.getElementById("level6text").innerHTML = level_time;
+            }
+        }
+        setInterval(flash,2000);
+        function update_info() {
+            update_team();
+            update_log()
+            update_item();
+        }
+        function refresh(){
+            var fun = function (_this) {
+                all_info = JSON.parse(_this.responseText);
+                if(all_info[3] == "1") window.location.href = "../final.html";
+                update_info();
+            };
+            get_php(fun,"../function/control_panel_info.php");
+        }
+        function freeze() {
+            var fun = function (_this) {
+                window.location.href = "../final.html";
+            };
+            get_php(fun,"../function/set_freeze.php");
+        }
+        refresh();
+        setInterval(refresh,5000);
+    </script>
+</head>
+<body>
+<div>
+
+    <div id="left" >
+
+        <div id="all_data"style="display: inline-block;">
+            <div id="table" style="display: inline-block;vertical-align:top;">
+                <table id="inform_tab" >
+                    <!--table-->
+                    <tr >
+                        <td class="inform_tab_td">        </td>
+                        <td class="inform_tab_td">剩餘人數</td>
+                        <td class="inform_tab_td">分數</td>
+                    </tr>
+                    <tr >
+                        <td class="inform_tab_td">第一小隊</td>
+                        <td class="inform_tab_td" id="team1mem"></td>
+                        <td class="inform_tab_td" id="team1score"></td>
+                    </tr>
+                    <tr >
+                        <td class="inform_tab_td">第二小隊</td>
+                        <td class="inform_tab_td" id="team2mem"></td>
+                        <td class="inform_tab_td" id="team2score"></td>
+                    </tr>
+                    <tr >
+                        <td class="inform_tab_td">第三小隊</td>
+                        <td class="inform_tab_td" id="team3mem"></td>
+                        <td class="inform_tab_td" id="team3score"></td>
+                    </tr>
+                    <tr >
+                        <td class="inform_tab_td">第四小隊</td>
+                        <td class="inform_tab_td" id="team4mem"></td>
+                        <td class="inform_tab_td" id="team4score"></td>
+                    </tr>
+                    <tr >
+                        <td class="inform_tab_td">第五小隊</td>
+                        <td class="inform_tab_td"  id="team5mem"></td>
+                        <td class="inform_tab_td" id="team5score"></td>
+                    </tr>
+                    <tr >
+                        <td class="inform_tab_td">第六小隊</td>
+                        <td class="inform_tab_td"  id="team6mem"></td>
+                        <td class="inform_tab_td" id="team6score"></td>
+                    </tr>
+                    <tr >
+                        <td class="inform_tab_td">第七小隊</td>
+                        <td class="inform_tab_td" id="team7mem"></td>
+                        <td class="inform_tab_td" id="team7score"></td>
+                    </tr>
+                    <tr >
+                        <td class="inform_tab_td">第八小隊</td>
+                        <td class="inform_tab_td" id="team8mem"></td>
+                        <td class="inform_tab_td" id="team8score"></td>
+                    </tr>
+
+                    </table>
+            </div>
+
+            <div style="display: inline-block;">
+                <div id="pig_data">
+                    <div id="pig_log"></div>
+                    <div id="pig_edit"><span style="cursor: pointer;" onclick="window.location.href='pig_control.html'">EDIT...</span></div>
+                </div>
+                <div id="score">
+                    <div id="log"></div>
+                    <div id="log_edit"><span style="cursor: pointer;" onclick="window.location.href='game_control.html'">EDIT...</span></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="game">
+            <!--關卡-->
+            <div class="level_style"id="level1"><span id="level1text">00 : 00</span></div>
+            <div class="level_style"id="level2"><span id="level2text">00 : 00</span></div>
+            <div class="level_style"id="level3"><span id="level3text">00 : 00</span></div>
+            <div class="level_style"id="level4"><span id="level4text">00 : 00</span></div>
+            <div class="level_style"id="level5"><span id="level5text">00 : 00</span></div>
+            <div class="level_style"id="level6"><span id="level6text">00 : 00</span></div>
+            <div class="level_style"id="gym"></div>
+        </div>
+    </div>
+
+    <div id="rightbar">
+        <div id="timer">
+        </div>
+        <script>
+            setInterval(time_info,1000);
+        </script>
+
+        <div style="min-width: 260px;">
+            <div class="team" id="1" onclick="multi_select(1)">1</div>
+            <div class="team" id="2" onclick="multi_select(2)">2</div>
+            <div class="team" id="3" onclick="multi_select(3);">3</div>
+            <div class="team" id="4" onclick="multi_select(4)">4</div>
+            <div class="team" id="5" onclick="multi_select(5)">5</div>
+            <div class="team" id="6" onclick="multi_select(6)">6</div>
+            <div class="team" id="7" onclick="multi_select(7)">7</div>
+            <div class="team" id="8" onclick="multi_select(8)">8</div>
+            <div id="reborn" onclick="reborn();">復 活</div>
+        </div>
+    </div>
+
+    <div id="final" onclick="freeze();">結算</div>
+</div>
+
+</body>
+</html>

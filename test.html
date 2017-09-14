@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .A1{
+            backface-visibility: hidden;
+        }
+        .A2{
+            backface-visibility: hidden;
+            transform: rotateY(180deg);
+        }
+        .container{
+            width: 404px;
+            perspective: 1000px;
+        }
+        .flip{
+            transition: 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+            display: block;
+            width: 404px;
+        }
+        .container:hover .flip{
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="flip">
+        <div class="A1"  style="z-index: 2; position: absolute;"><img src="image/card/main1.png"></div>
+        <div class="A2" style="z-index: 1; position: absolute;"><img src="image/card/main2.png"></div>
+    </div>
+</div>
+</body>
+</html>

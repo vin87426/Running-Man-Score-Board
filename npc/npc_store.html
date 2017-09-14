@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+    <link rel="shortcut icon" href="../image/ico.png">
+    <link rel="stylesheet" type="text/css" href="../css/shop.css">
+    <script src="../script/timer.js"></script>
+    <script src="../script/get_php.js"></script>
+    <script>
+        refresh();
+        setInterval(refresh,10000);
+        function plus(){
+            var fun = function (_this) {
+                refresh();
+            };
+            get_php(fun,"../function/shop.php?buy=1");
+        }
+        function minus(){
+            var fun = function (_this) {
+                refresh();
+            };
+            get_php(fun,"../function/shop.php?buy=-1");
+        }
+        function refresh() {
+            var fun = function (_this) {
+                document.getElementById("swordcnt").innerText = _this.responseText;
+                console.log("refreshing!");
+            };
+            get_php(fun,"../function/sword_number.php");
+        }
+    </script>
+</head>
+
+<body style="background-color: rgb(78,75,70);">
+<div>
+<img src="../image/top-store.png" style="width: 90vw;">
+    <div id="timer"></div>
+    <script>
+        setInterval(time_info,1000);
+    </script>
+
+<div id="top" style="display:inline-block; width:100%;">
+    <span><img src="../image/sword.png" id="sword"></span>
+    <span id="com">：</span>
+    <span id="swordcnt">0</span>
+</div>
+
+<div>
+    <span id="plus" onclick="plus()">＋</span>
+    <span id="minus" onclick="minus()">－</span>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Time_modify</title>
+    <script src="../script/get_php.js"></script>
+    <script type="application/javascript">
+        function send(){
+            var fun = function (_this) {
+                window.location.href = "game_control.html";
+            };
+            var data = {};
+            data.hr = document.getElementById('hr').value;
+            data.mi = document.getElementById('mi').value;
+            get_php(fun,"../function/time_modify.php?data="+JSON.stringify(data));
+        }
+    </script>
+    <style type="text/css">
+        *{
+            font-family:"微軟正黑體" ;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: rgb(78,75,70);
+            margin: 0;
+        }
+        .PL{
+            display: inline-block;
+            height: 10vh;
+            font-size: 7vh;
+            background-color: white;
+            width: 12vh;
+            vertical-align: top;
+            padding:0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 100%;text-align: center">
+        <div style="margin: auto;width: 100vh;margin-top: 4vh;background-color:rgb(67,125,183);font-size: 60px;">
+            <input type="text" class="PL" id="hr" style="cursor: text;">時<input type="text" class="PL" id="mi" style="cursor: text;">分
+        </div>
+        <div style="margin: auto;width: 100vh;margin-top: 4vh;">
+            <div class="PL" style="width: 30vh" onclick="send();">確定</div>
+            <div class="PL" style="width: 30vh" onclick="window.location.href='game_control.html'">取消</div>
+        </div>
+    </div>
+</body>
+</html>

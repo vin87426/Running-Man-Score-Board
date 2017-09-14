@@ -1,0 +1,61 @@
+@charset "utf-8";
+*{
+    font-family:"微軟正黑體" ;
+}
+div{
+    text-align: center;
+}
+
+#timer{
+    font-size: 10vw;
+    color: white;
+    margin:10vw;
+}
+
+#sword{
+    width: 22vw;
+    margin-top: 5vw;
+}
+
+#com{
+    font-size: 30vw;
+    color: white;
+    text-align: center;
+    display: inline-block;
+}
+
+#swordcnt{
+    font-size: 30vw;
+    color: white;
+    margin-right: 7vw;
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 8vw;
+}
+
+#plus{
+    background-color: white;
+    margin-top: 2vw;
+    margin-right: 7vw;
+    width: 35vw;
+    font-size: 15vw;
+    color:rgb(78,75,70);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight:bolder;
+    cursor: pointer;
+}
+
+#minus{
+    background-color: white;
+    margin-top: 2vw;
+    width: 35vw;
+    font-size: 15vw;
+    color:rgb(78,75,70);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight:bolder;
+    cursor: pointer;
+}

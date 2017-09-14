@@ -1,0 +1,234 @@
+@charset "utf-8";
+
+*{
+    font-family:"微軟正黑體" ;
+}
+body{
+    width:1300px;
+    background-color: rgb(78,75,70);
+    -moz-user-select : none;
+    -webkit-user-select: none;
+    text-align: center;
+}
+
+div{
+    text-align: center;
+}
+#left{
+    width:980px;
+    text-align: center;
+    display:inline-block;
+}
+
+#rightbar{
+    width:250px;
+    display:inline-block;
+    vertical-align:top;
+}
+
+#inform_tab{
+    margin: 10px;
+    min-width:400px;
+    max-width:400px;
+    height: 550px;
+    border:solid;
+    border-color: white;
+    border-width: 1px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.inform_tab_td
+{
+    border:solid;
+    border-color: white;
+    border-width: 1px;
+    margin:2px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+
+#pig_data{
+    background-color: white;
+    border:solid;
+    border-color:rgb(240,149,0);
+    border-width: 10px;
+    width:500px;
+    height:200px;
+    margin:10px;
+
+}
+#log{
+    max-height: 230px;
+    min-height: 230px;
+    margin-top: 10px;
+    margin-left: 10px;
+    text-align: left;
+    font-size: 20px;
+    overflow: auto;
+}
+#pig_log{
+    max-height: 150px;
+    min-height: 150px;
+    margin-top: 10px;
+    margin-left: 10px;
+    text-align: left;
+    font-size: 28px;
+}
+#score{
+    background-color: white;
+    border:solid;
+    border-color:rgb(240,149,0);
+    border-width: 10px;
+    width:500px;
+    height:300px;
+    overflow: hidden;
+    margin:10px;
+}
+
+#timer{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:10px;
+    width: 250px;
+    height: 85px;
+    font-size:50px;
+    background-color: white;
+}
+
+.team {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #000000;
+    border-radius:10%;
+    border: none;
+    color: white;
+    width:110px;
+    height:110px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 80px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left:10px;
+    cursor: pointer;
+}
+
+#final{
+    margin:auto;
+    margin-top:25px;
+    background-color: white;
+    width: 250px;
+    height: 100px;
+    text-align: center;
+    text-decoration: none;
+    color:rgb(78,75,70);
+    font-size: 80px;
+    display: none;
+    cursor: pointer;
+}
+#reborn{
+    margin-left:15px;
+    margin-top: 10px;
+    background-color: white;
+    width: 240px;
+    height: 80px;
+    text-align: center;
+    text-decoration: none;
+    color:rgb(78,75,70);
+    font-size: 60px;
+    cursor: pointer;
+}
+.level{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    color: rgb(78,75,70);
+    font-size: 60px;
+    cursor: pointer;
+}
+
+#but_back{
+    font-size: 60px;
+    margin:auto;
+    color: white;
+    cursor: pointer;
+}
+
+.category{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background-color: white;
+    width:250px;
+    height:150px;
+    margin:10px;
+    font-size: 60px;
+
+}
+#pig_edit{
+    text-align: right;
+    font-size: 28px;
+    margin-right: 10px;
+    min-width: 480px;
+    max-width: 480px;
+}
+#log_edit{
+    text-align: right;
+    font-size: 28px;
+    margin-right: 10px;
+    min-width: 480px;
+    max-width: 480px;
+    cursor: pointer;
+}
+.but_change{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background-color: white;
+    width:200px;
+    height: 100px;
+    margin:20px;
+    font-size: 60px;
+    cursor: pointer;
+}
+.but_content{
+    color: white;
+    font-size: 70px;
+}
+.but_end{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background-color: white;
+    width:180px;
+    height: 80px;
+    margin:30px;
+    font-size: 60px;
+    cursor: pointer;
+}
+.level_style{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-image: url(../image/game/game_close.png);
+    background-repeat: no-repeat;
+    margin: 5px;
+    vertical-align: top;
+    min-height: 120px;
+    min-width: 120px;
+    background-size: 120px 120px;
+    display: inline-block;
+    padding-top: 70px;
+    font-size: 23px;
+    font-weight: bold;
+}

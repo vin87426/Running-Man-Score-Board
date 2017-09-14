@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- NPC 7 -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>hong</title>
+    <link rel="shortcut icon" href="../image/ico.png">
+    <link rel="stylesheet" type="text/css" href="../css/npcCSS.css">
+    <script src="../script/timer.js"></script>
+    <script src="../script/get_php.js"></script>
+    <script src="../script/log.js"></script>
+    <script src="../script/multi_select.js"></script>
+</head>
+<body>
+<div id="main">
+    <img src="../image/top-hong.png" style="width: 90vw;">
+    <div id="timer"></div>
+    <script>
+        setInterval(time_info,1000);
+    </script>
+
+    <div>
+        <span class="team" id="1" onclick="multi_select(1)">1</span>
+        <span class="team" id="2" onclick="multi_select(2)">2</span>
+    </div>
+    <div>
+        <span class="team" id="3" onclick="multi_select(3)">3</span>
+        <span class="team" id="4" onclick="multi_select(4)">4</span>
+    </div>
+    <div>
+        <span class="team" id="5" onclick="multi_select(5)">5</span>
+        <span class="team" id="6" onclick="multi_select(6)">6</span>
+    </div>
+    <div>
+        <span class="team" id="7" onclick="multi_select(7)">7</span>
+        <span class="team" id="8" onclick="multi_select(8)">8</span>
+    </div>
+</div>
+
+<div id="modify">
+    <div id="log" style="display:none;"></div>
+</div>
+
+<div>
+    <span id="change" onclick="change_page('log',7)" style="cursor: pointer;">Edit</span>
+    <span id="but_ok" onclick="add(7)" style="cursor: pointer;">O K</span>
+    <span id="but_del" onclick="del('log',7)" style="cursor: pointer;display:none;">Del</span>
+</div>
+
+</body>
+</html>

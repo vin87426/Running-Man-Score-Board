@@ -1,0 +1,49 @@
+@charset "utf-8";
+*{
+    font-family:"微軟正黑體" ;
+}
+#log{
+    margin: auto;
+    width:50vw;
+    height:50vh;
+    font-size: 4.5vw;
+    text-align: center;
+}
+body {
+    background-color: rgb(78,75,70);
+    -moz-user-select : none;
+    -webkit-user-select: none;
+}
+div{
+    text-align: center;
+}
+#modify{
+    display:none;
+    background-color: white;
+    border:solid;
+    border-color:rgb(240,149,0);
+    border-width: 1vw;
+    width:80vw;
+    height:60vh;
+    overflow: auto;
+    margin:2vw;
+}
+#change{
+    width:10vw;
+    font-size: 10vw;
+    color: white;
+    margin-top:2vw;
+    margin-bottom: 5vw;
+}
+#but_del{
+    background-color: white;
+    margin-left: 5vw;
+    width: 20vw;
+    font-size: 10vw;
+    color:rgb(78,75,70);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top:2vw;
+    margin-bottom: 5vw;
+}

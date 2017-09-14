@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pig</title>
+    <link rel="stylesheet" type="text/css" href="../css/PIG.css">
+
+    <script>
+        var color_array = ["rgb(195,104,165)","rgb(243,127,139)","rgb(247,199,127)"," rgb(255,244,104)","rgb(154,242,129)","rgb(127,204,160)","rgb(128,208,245)","rgb(67,125,183)"];
+        var team=0;
+        var xxhttp = new XMLHttpRequest();
+        xxhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("swordcnt").innerText = this.responseText;
+                console.log("refreshing!");
+            }
+        };
+        xxhttp.open("GET", "sword_number.php", true);
+        xxhttp.send();
+        var x = setInterval(function() {
+            xxhttp.open("GET", "sword_number.php", true);
+            xxhttp.send();
+        }, 10000);
+        function select_team(checked){
+            if(team == checked){
+                document.getElementById(team).style.background = "#000000";
+                team=0;
+                console.log("team: 0");
+                return;
+            }
+            team = checked;
+            console.log("team: " + checked);
+            for(var i=1;i<9;i++){
+                if(i == checked){
+                    document.getElementById(i).style.background = color_array[checked-1];
+                }
+                else {
+                    document.getElementById(i).style.background = "#000000";
+                }
+            }
+        }
+        function kill(status) {
+            if(team != "0"){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        alert(this.responseText);
+                    }
+                };
+                xhttp.open("GET", "kill.php?which_team=" + team +"&kill=" + status, true);
+                xhttp.send();
+                document.getElementById(team).style.background = "#000000";
+                team = 0;
+            }
+        }
+        function go_out() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert(this.responseText);
+                }
+            };
+            xhttp.open("GET", "gogo.php?king=0&out=1", true);
+            xhttp.send();
+        }
+        function go_home() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert(this.responseText);
+                }
+            };
+            xhttp.open("GET", "gogo.php?king=0&out=0", true);
+            xhttp.send();
+        }
+    </script>
+    <link rel="stylesheet" href="../css/PIG.css">
+</head>
+<body style="background-color: rgb(78,75,70);">
+<div id="top" style="display:inline-block; width:100%;">
+    <span><img src="../image/sword.png" id="sword"></span>
+    <span id="com">：</span>
+    <span id="swordcnt">0</span>
+</div>
+
+<div id="main" style="display:inline-block; width:100%;">
+    <div>
+        <span class="team" id="1" onclick="select_team(1)">1</span>
+        <span class="team" id="2" onclick="select_team(2)">2</span>
+        <span class="team" id="3" onclick="select_team(3)">3</span>
+        <span class="team" id="4" onclick="select_team(4)">4</span>
+    </div>
+    <div>
+        <span class="team" id="5" onclick="select_team(5)">5</span>
+        <span class="team" id="6" onclick="select_team(6)">6</span>
+        <span class="team" id="7" onclick="select_team(7)">7</span>
+        <span class="team" id="8" onclick="select_team(8)">8</span>
+    </div>
+</div>
+
+<div style="display:none;" id="modify"></div>
+<div id="log"></div>
+<div>
+    <span id="change" onclick="kill('kill')">Kill</span>
+    <span id="but_ok" onclick="kill('killed')">Killed</span>
+</div>
+
+<div>
+    <span id="go" onclick="go_out()">出動</span>
+    <span id="back" onclick="go_home()">回家</span>
+</div>
+
+<p id="demo"></p>
+
+</body>
+</html>

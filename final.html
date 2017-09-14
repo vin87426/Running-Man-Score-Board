@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>FINAL</title>
+    <link rel="stylesheet" type="text/css" href="css/final.css">
+    <script src="script/get_php.js"></script>
+    <script type="application/javascript">
+        function view_score() {
+            for(var i=1;i<=8;i++){
+                document.getElementById("team"+i.toString()).innerHTML = "第"+all_info[0][i-1]["num"]+"小隊";
+                document.getElementById("team"+i.toString()+"s").innerHTML = all_info[0][i-1]["score"]+"分";
+            }
+        }
+        function load_info() {
+            var fun = function (_this) {
+                all_info = JSON.parse(_this.responseText);
+                if(all_info[1]=="0")window.location.href = "info/inform.html";
+                view_score();
+            };
+            get_php(fun,"function/final_info.php");
+        }
+    </script>
+</head>
+<body onload="load_info();">
+    <div class="main1">
+        <div id="left">
+            <div id="one">
+                <img src="image/clown.png" id="clown">
+                    <div id="one_content">1</div>
+                    <div id="one_content_2">
+                        <div id="team1">第 ? 小隊</div>
+                        <div id="team1s">30000分</div>
+                    </div>
+            </div>
+        </div>
+        <div id="right">
+            <div class="two" id="two">
+                <div style="height: 20px;"></div>
+                <span style="display: inline-block; width: 9.1rem; font-size: 7.5rem;  font-weight: bold; color: aquamarine;">2</span>
+                <span style="display: inline-block; width: 230px;">
+                        <div id="team2">第 ? 小隊</div>
+                        <div id="team2s">30000分</div>
+                    </span>
+            </div>
+            <div class="two" id="three">
+                <div style="height: 20px;"></div>
+                <span style="display: inline-block; width: 9.1rem; font-size: 7.5rem;  font-weight: bold; color: mediumblue;">3</span>
+                <span style="display: inline-block; width: 14.3rem;">
+                        <div id="team3">第 ? 小隊</div>
+                        <div id="team3s">30000分</div>
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div class="main2">
+        <div class="other" id="four">
+            <div>
+                <div id="team4">第 ? 小隊</div>
+                <div id="team4s">30000分</div>
+            </div>
+        </div>
+        <div class="other" id="five">
+            <div>
+                <div id="team5">第 ? 小隊</div>
+                <div id="team5s">30000分</div>
+            </div>
+        </div>
+        <div class="other" id="six">
+            <div>
+                <div id="team6">第 ? 小隊</div>
+                <div id="team6s">30000分</div>
+            </div>
+        </div>
+        <div class="other" id="seven">
+            <div>
+                <div id="team7">第 ? 小隊</div>
+                <div id="team7s">30000分</div>
+            </div>
+        </div>
+        <div class="other" id="eight">
+            <div>
+                <div id="team8">第 ? 小隊</div>
+                <div id="team8s">30000分</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
