@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a5475429-a31e-4feb-a40e-d83137eaf8e3" name="Default" comment="" />
+    <list default="true" id="a5475429-a31e-4feb-a40e-d83137eaf8e3" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,17 +35,17 @@
         <entry file="file://$PROJECT_DIR$/css/informCSS.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1900">
-              <caret line="100" column="12" lean-forward="true" selection-start-line="98" selection-start-column="4" selection-end-line="100" selection-end-column="12" />
+              <caret line="100" column="12" lean-forward="false" selection-start-line="98" selection-start-column="4" selection-end-line="100" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add_score.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="add_score.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/function/add_score.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+            <state relative-caret-position="563">
+              <caret line="36" column="23" lean-forward="true" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -52,7 +54,7 @@
       <file leaf-file-name="f_member.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/function/f_member.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
+            <state relative-caret-position="1102">
               <caret line="58" column="9" lean-forward="false" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
               <folding>
                 <marker date="1502454202355" expanded="true" signature="91:114" ph="SELECT freez... item" />
@@ -74,7 +76,7 @@
       <file leaf-file-name="f_npc.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/function/f_npc.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-358">
+            <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <marker date="1501852001432" expanded="true" signature="88:126" ph="SELECT * FRO... log" />
@@ -89,11 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="f_item.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="f_item.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/function/f_item.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="116" column="53" lean-forward="false" selection-start-line="116" selection-start-column="53" selection-end-line="116" selection-end-column="53" />
+            <state relative-caret-position="532">
+              <caret line="28" column="29" lean-forward="false" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
               <folding>
                 <marker date="1505355127700" expanded="true" signature="94:117" ph="SELECT freez... item" />
                 <marker date="1505355127700" expanded="true" signature="278:300" ph="SELECT sword... item" />
@@ -123,7 +125,7 @@
         <entry file="file://$PROJECT_DIR$/function/f_score_in.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="304">
-              <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+              <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
               <folding>
                 <marker date="1501851910903" expanded="true" signature="119:142" ph="SELECT freez... item" />
                 <marker date="1501851910903" expanded="true" signature="316:376" ph="INSERT INTO log... " />
@@ -200,6 +202,9 @@
       <replace>width=&quot;404&quot; height=&quot;607&quot;</replace>
       <replace>width=&quot;300&quot; height=&quot;449&quot;</replace>
     </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -286,8 +291,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -484,21 +489,23 @@
       <workItem from="1503299759020" duration="68000" />
       <workItem from="1503329416247" duration="608000" />
       <workItem from="1505355096272" duration="55000" />
+      <workItem from="1505731735565" duration="28000" />
+      <workItem from="1505731778561" duration="599000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139878000" />
+    <option name="totallyTimeSpent" value="140505000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21375267" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21801706" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -834,22 +841,14 @@
     <entry file="file://$PROJECT_DIR$/css/informCSS.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1900">
-          <caret line="100" column="12" lean-forward="true" selection-start-line="98" selection-start-column="4" selection-end-line="100" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function/add_score.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+          <caret line="100" column="12" lean-forward="false" selection-start-line="98" selection-start-column="4" selection-end-line="100" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/function/f_member.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
+        <state relative-caret-position="1102">
           <caret line="58" column="9" lean-forward="false" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
           <folding>
             <marker date="1502454202355" expanded="true" signature="91:114" ph="SELECT freez... item" />
@@ -870,7 +869,7 @@
     <entry file="file://$PROJECT_DIR$/function/f_score_in.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
-          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+          <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
           <folding>
             <marker date="1501851910903" expanded="true" signature="119:142" ph="SELECT freez... item" />
             <marker date="1501851910903" expanded="true" signature="316:376" ph="INSERT INTO log... " />
@@ -895,7 +894,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/function/f_npc.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-358">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <marker date="1501852001432" expanded="true" signature="88:126" ph="SELECT * FRO... log" />
@@ -911,8 +910,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/function/f_item.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="116" column="53" lean-forward="false" selection-start-line="116" selection-start-column="53" selection-end-line="116" selection-end-column="53" />
+        <state relative-caret-position="532">
+          <caret line="28" column="29" lean-forward="false" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
           <folding>
             <marker date="1505355127700" expanded="true" signature="94:117" ph="SELECT freez... item" />
             <marker date="1505355127700" expanded="true" signature="278:300" ph="SELECT sword... item" />
@@ -934,6 +933,14 @@
             <marker date="1505355127700" expanded="true" signature="3284:3310" ph="UPDATE item " />
             <marker date="1505355127700" expanded="true" signature="3418:3441" ph="SELECT freez... item" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/function/add_score.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="563">
+          <caret line="36" column="23" lean-forward="true" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
