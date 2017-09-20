@@ -39,8 +39,16 @@
             }
         }
         function update_level() {
-            if(all_info[1]["gym"]=="1")document.getElementById("gym").style.backgroundImage = "url(../image/game/game-exercise.png)";
-            else document.getElementById("gym").style.backgroundImage = "url(../image/game/game_close.png)";
+            if(all_info[1]["gym"]=="1"){
+                document.getElementById("gym").style.backgroundImage = "url(../image/game/game-exercise.png)";
+                document.getElementById("gym").parentNode.parentNode.classList.remove("container_for_level_close");
+                document.getElementById("gym").parentNode.parentNode.classList.add("container_for_level");
+            }
+            else {
+                document.getElementById("gym").style.backgroundImage = "url(../image/game/game_close.png)";
+                document.getElementById("gym").parentNode.parentNode.classList.remove("container_for_level");
+                document.getElementById("gym").parentNode.parentNode.classList.add("container_for_level_close");
+            }
             if(level_state==1){
                 document.getElementById("level1").style.backgroundImage = "url(../image/game/game-manbug.png)";
                 document.getElementById("level3").style.backgroundImage = "url(../image/game/game-dance.png)";
@@ -48,6 +56,18 @@
                 document.getElementById("level2").style.backgroundImage = "url(../image/game/game_close.png)";
                 document.getElementById("level4").style.backgroundImage = "url(../image/game/game_close.png)";
                 document.getElementById("level6").style.backgroundImage = "url(../image/game/game_close.png)";
+                document.getElementById("level2").parentNode.parentNode.classList.remove("container_for_level");
+                document.getElementById("level2").parentNode.parentNode.classList.add("container_for_level_close");
+                document.getElementById("level4").parentNode.parentNode.classList.remove("container_for_level");
+                document.getElementById("level4").parentNode.parentNode.classList.add("container_for_level_close");
+                document.getElementById("level6").parentNode.parentNode.classList.remove("container_for_level");
+                document.getElementById("level6").parentNode.parentNode.classList.add("container_for_level_close");
+                document.getElementById("level1").parentNode.parentNode.classList.remove("container_for_level_close");
+                document.getElementById("level1").parentNode.parentNode.classList.add("container_for_level");
+                document.getElementById("level3").parentNode.parentNode.classList.remove("container_for_level_close");
+                document.getElementById("level3").parentNode.parentNode.classList.add("container_for_level");
+                document.getElementById("level5").parentNode.parentNode.classList.remove("container_for_level_close");
+                document.getElementById("level5").parentNode.parentNode.classList.add("container_for_level");
                 document.getElementById("level1text").style.display = "inherit";
                 document.getElementById("level3text").style.display = "inherit";
                 document.getElementById("level5text").style.display = "inherit";
@@ -64,6 +84,18 @@
                 document.getElementById("level2").style.backgroundImage = "url(../image/game/game-bind.png)";
                 document.getElementById("level4").style.backgroundImage = "url(../image/game/game-say.png)";
                 document.getElementById("level6").style.backgroundImage = "url(../image/game/game-merder.png)";
+                document.getElementById("level1").parentNode.parentNode.classList.remove("container_for_level");
+                document.getElementById("level1").parentNode.parentNode.classList.add("container_for_level_close");
+                document.getElementById("level3").parentNode.parentNode.classList.remove("container_for_level");
+                document.getElementById("level3").parentNode.parentNode.classList.add("container_for_level_close");
+                document.getElementById("level5").parentNode.parentNode.classList.remove("container_for_level");
+                document.getElementById("level5").parentNode.parentNode.classList.add("container_for_level_close");
+                document.getElementById("level2").parentNode.parentNode.classList.remove("container_for_level_close");
+                document.getElementById("level2").parentNode.parentNode.classList.add("container_for_level");
+                document.getElementById("level4").parentNode.parentNode.classList.remove("container_for_level_close");
+                document.getElementById("level4").parentNode.parentNode.classList.add("container_for_level");
+                document.getElementById("level6").parentNode.parentNode.classList.remove("container_for_level_close");
+                document.getElementById("level6").parentNode.parentNode.classList.add("container_for_level");
                 document.getElementById("level1text").style.display = "none";
                 document.getElementById("level3text").style.display = "none";
                 document.getElementById("level5text").style.display = "none";
