@@ -16,6 +16,25 @@ function mem_dead($tn){
     $mdie = null;
     return true;
 }
+function mem_add($tn){
+    include("sql_in.php");
+    $freeze_check = $db->prepare("SELECT freeze FROM item");
+    $freeze_check->execute();
+    $freeze = ($freeze_check->fetch())[0];
+    $freeze_check = null;
+    if($freeze=="1")return false;
+    $team_check = $db->prepare("SELECT * FROM team WHERE num='$tn'");
+    $team_check->execute();
+    $team_status = $team_check->fetch();
+    $memnow = $team_status["mem_cur"];
+    $memall = $team_status["mem_all"];
+    $team_check=null;
+    if($memnow+1>$memall)return false;
+    $mdie = $db->prepare("UPDATE team SET mem_cur=mem_cur+1 WHERE num='$tn'");
+    $mdie->execute();
+    $mdie = null;
+    return true;
+}
 function reborn($tn,$val){
     include("sql_in.php");
     $freeze_check = $db->prepare("SELECT freeze FROM item");
